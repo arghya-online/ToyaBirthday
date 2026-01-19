@@ -39,8 +39,8 @@ const PhotoScene = () => {
 
     return (
         <div ref={containerRef} className="flex flex-col items-center justify-center min-h-screen px-4 z-10 relative">
-            <div className="photo-frame bg-white p-4 pb-12 rounded-lg shadow-2xl max-w-sm md:max-w-md w-full transform rotate-1 hover:rotate-0 transition-transform duration-500">
-                <div className="bg-gray-100 rounded overflow-hidden aspect-[3/4] mb-6 relative">
+            <div className="photo-frame bg-white pb-6 rounded-2xl shadow-2xl max-w-[90%] md:max-w-md w-full transform rotate-1 hover:rotate-0 transition-transform duration-500 overflow-hidden">
+                <div className="bg-gray-100 aspect-[3/4] mb-4 relative">
                     <img
                         src={image}
                         alt="Her photo"
@@ -49,7 +49,7 @@ const PhotoScene = () => {
                     <div className="photo-curtain absolute inset-0 bg-white z-10" />
                 </div>
 
-                <p className="photo-caption text-center font-serif text-3xl text-deep-maroon italic">
+                <p className="photo-caption text-center font-serif text-3xl text-deep-maroon italic px-4">
                     {caption}
                 </p>
             </div>

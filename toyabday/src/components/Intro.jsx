@@ -18,7 +18,7 @@ const Intro = () => {
     }, { scope: containerRef });
 
     return (
-        <div ref={containerRef} className="flex flex-col items-center justify-center min-h-screen text-center px-6 relative z-10 font-serif">
+        <div ref={containerRef} className="flex flex-col items-center justify-center min-h-screen text-center px-4 relative z-10 font-serif">
             <h2 className="intro-greeting text-3xl md:text-4xl font-light text-rose-accent mb-6">
                 {content.greeting}
             </h2>
@@ -28,7 +28,7 @@ const Intro = () => {
             </p>
 
             <div className="overflow-hidden mb-8">
-                <h1 className="intro-heading text-6xl md:text-8xl font-bold text-deep-maroon leading-none">
+                <h1 className="intro-heading text-5xl md:text-8xl font-bold text-deep-maroon leading-none">
                     {content.heading}
                 </h1>
             </div>

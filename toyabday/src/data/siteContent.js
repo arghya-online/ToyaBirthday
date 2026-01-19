@@ -9,7 +9,7 @@ export const siteContent = {
         {
             id: "intro",
             type: "intro",
-            duration: 9000, // 9 seconds
+            duration: 12000, // Increased to 12s
             content: {
                 greeting: "Hi Sumedha...",
                 subgreeting: "I made something small for you.",
@@ -20,7 +20,7 @@ export const siteContent = {
         {
             id: "wish",
             type: "wish",
-            duration: 12000, // 12 seconds for reading
+            duration: 16000, // Increased to 16s for reading
             content: {
                 title: "Today is your day.",
                 lines: [
@@ -34,7 +34,7 @@ export const siteContent = {
         {
             id: "photo",
             type: "photo",
-            duration: 10000,
+            duration: 14000,
             image: "/sumedha1.png",
             caption: "This is you.",
             content: {
@@ -48,7 +48,7 @@ export const siteContent = {
         {
             id: "doctor",
             type: "doctor",
-            duration: 11000,
+            duration: 15000,
             image: "/sumedha_doctor.png",
             caption: "And this is you... very soon.",
             content: {

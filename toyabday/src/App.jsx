@@ -9,6 +9,8 @@ import PhotoScene from './components/PhotoScene';
 import DoctorScene from './components/DoctorScene';
 import FinalScene from './components/FinalScene';
 import { siteContent } from './data/siteContent';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 function App() {
   const [currentSection, setCurrentSection] = useState(0);
@@ -75,9 +77,11 @@ function App() {
       </AnimatePresence>
 
       {/* User hint for skip (fades out after a while or stays subtle) */}
-      <div className="fixed bottom-6 right-6 text-deep-maroon/20 text-xs pointer-events-none z-30 font-sans">
-        {currentSection < 4 ? "Tap to skip →" : ""}
-      </div>
+      {/* User hint for skip removed as per request */}
+
+      {/* Vercel Analytics & Insights */}
+      <Analytics />
+      <SpeedInsights />
     </div>
   );
 }

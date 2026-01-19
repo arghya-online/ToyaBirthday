@@ -52,7 +52,7 @@ const DoctorScene = () => {
     return (
         <div ref={containerRef} className="flex flex-col items-center justify-center min-h-screen px-4 z-10 relative">
             <div className="relative mb-10">
-                <div className="doc-frame relative z-10 rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(255,255,255,0.6)] border-4 border-white/80 max-w-sm md:max-w-md">
+                <div className="doc-frame relative z-10 rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(255,255,255,0.6)] border-2 md:border-4 border-white/80 max-w-[90%] md:max-w-md mx-auto">
                     <img src={image} alt="Doctor Sumedha" className="w-full h-auto object-cover" />
 
                     <div className="absolute inset-0 bg-gradient-to-t from-deep-maroon/70 via-transparent to-transparent opacity-80" />

@@ -37,35 +37,35 @@ const FinalScene = ({ onReplay }) => {
     }, { scope: containerRef });
 
     return (
-        <div ref={containerRef} className="flex flex-col items-center justify-center min-h-screen px-6 text-center z-10 relative overflow-hidden">
+        <div ref={containerRef} className="flex flex-col items-center justify-center min-h-screen px-4 text-center z-10 relative overflow-hidden">
 
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-rose-accent/10 pointer-events-none" />
 
-            <h1 className="final-heading text-5xl md:text-7xl font-serif text-deep-maroon mb-16">
+            <h1 className="final-heading text-4xl md:text-7xl font-serif text-deep-maroon mb-12 md:mb-16 font-bold leading-tight">
                 {content.heading}
             </h1>
 
-            <div className="space-y-8 max-w-3xl mb-20">
+            <div className="space-y-6 md:space-y-8 max-w-[90%] md:max-w-3xl mb-16 md:mb-20">
                 {content.wishes.map((wish, i) => (
-                    <p key={i} className="final-wish text-xl md:text-3xl text-deep-maroon/80 font-serif leading-relaxed">
+                    <p key={i} className="final-wish text-lg md:text-3xl text-deep-maroon/80 font-serif leading-relaxed">
                         {wish}
                     </p>
                 ))}
             </div>
 
-            <div className="final-sig mb-16">
-                <p className="text-xl md:text-2xl italic text-rose-accent font-medium">
+            <div className="final-sig mb-12 md:mb-16">
+                <p className="text-lg md:text-2xl italic text-rose-accent font-medium">
                     {content.signature}
                 </p>
             </div>
 
             {showControls && (
-                <div className="flex gap-6 animate-fade-in">
+                <div className="flex gap-6 animate-fade-in z-20">
                     <button
                         onClick={onReplay}
-                        className="flex items-center gap-2 px-8 py-3 bg-white text-deep-maroon rounded-full shadow-lg border border-gray-100 hover:scale-105 transition-transform"
+                        className="flex items-center gap-3 px-8 py-4 bg-white text-deep-maroon rounded-full shadow-lg border border-gray-100 hover:scale-105 transition-transform active:scale-95"
                     >
-                        <Play size={18} fill="currentColor" /> {buttons.replay}
+                        <Play size={20} fill="currentColor" /> <span className="text-lg font-medium">{buttons.replay}</span>
                     </button>
                 </div>
             )}

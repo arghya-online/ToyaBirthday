@@ -5,8 +5,11 @@
 @tailwind utilities;
 
 @layer base {
+  html, body {
+    @apply h-full;
+  }
   body {
-    @apply bg-blush-pink text-deep-maroon font-sans overflow-x-hidden antialiased selection:bg-rose-accent/30;
+    @apply bg-blush-pink text-deep-maroon font-sans overflow-x-hidden antialiased selection:bg-rose-accent/30 touch-manipulation;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;

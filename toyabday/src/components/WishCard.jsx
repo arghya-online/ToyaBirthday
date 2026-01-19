@@ -62,7 +62,7 @@ const WishCard = () => {
 
     return (
         <div ref={containerRef} className="flex flex-col items-center justify-center min-h-screen px-4 z-10 relative">
-            <div className="wish-card bg-white/80 backdrop-blur-sm p-8 md:p-12 rounded-3xl shadow-[0_10px_40px_rgba(210,92,101,0.15)] max-w-2xl w-full text-center border border-white/60">
+            <div className="wish-card bg-white/80 backdrop-blur-sm p-6 md:p-10 rounded-3xl shadow-[0_10px_40px_rgba(210,92,101,0.15)] max-w-2xl w-full text-center border border-white/60">
                 <h2 className="wish-title text-3xl md:text-5xl font-serif text-deep-maroon mb-10">
                     {content.title}
                 </h2>

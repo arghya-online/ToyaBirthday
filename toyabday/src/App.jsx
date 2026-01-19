@@ -16,24 +16,24 @@ function App() {
   const [currentSection, setCurrentSection] = useState(0);
 
   // Auto-advance logic
-  useEffect(() => {
-    const sectionData = siteContent.sections[currentSection];
+  const [showNextButton, setShowNextButton] = useState(false);
 
-    // If it has a duration (not 0), set a timer
-    if (sectionData && sectionData.duration > 0) {
-      const timer = setTimeout(() => {
-        nextSection();
-      }, sectionData.duration);
-      return () => clearTimeout(timer);
-    }
+  // Timer to show next button
+  useEffect(() => {
+    setShowNextButton(false);
+    const timer = setTimeout(() => {
+      setShowNextButton(true);
+    }, 5000); // 5 seconds delay
+    return () => clearTimeout(timer);
   }, [currentSection]);
 
   const nextSection = () => {
-    setCurrentSection((prev) => Math.min(prev + 1, siteContent.sections.length - 1));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    // Haptic feedback if available (mobile)
-    if (navigator.vibrate) navigator.vibrate(50);
+    if (currentSection < siteContent.sections.length - 1) {
+      setCurrentSection((prev) => prev + 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Haptic feedback if available (mobile)
+      if (navigator.vibrate) navigator.vibrate(50);
+    }
   };
 
   const replay = () => {
@@ -54,8 +54,7 @@ function App() {
 
   return (
     <div
-      className={`min-h-screen relative overflow-hidden ${siteContent.colors.bg} ${siteContent.colors.text} cursor-pointer selection:bg-rose-accent/30`}
-      onClick={nextSection} // Tap anywhere to skip/advance
+      className={`min-h-screen relative overflow-hidden ${siteContent.colors.bg} ${siteContent.colors.text} selection:bg-rose-accent/30`}
     >
       {/* Background Animation */}
       <FloatingHearts />
@@ -76,8 +75,22 @@ function App() {
         </motion.div>
       </AnimatePresence>
 
-      {/* User hint for skip (fades out after a while or stays subtle) */}
-      {/* User hint for skip removed as per request */}
+      {/* Next Button (appears after 5s) - not shown on final page */}
+      <AnimatePresence>
+        {showNextButton && currentSection < siteContent.sections.length - 1 && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.5, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.5, y: 20 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={nextSection}
+            className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 px-8 py-3 bg-rose-accent text-white rounded-full font-serif text-lg shadow-xl shadow-rose-accent/30 flex items-center gap-2 hover:bg-opacity-90 transition-colors"
+          >
+            Next
+          </motion.button>
+        )}
+      </AnimatePresence>
 
       {/* Vercel Analytics & Insights */}
       <Analytics />

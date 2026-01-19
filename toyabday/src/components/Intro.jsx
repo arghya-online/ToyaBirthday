@@ -33,7 +33,7 @@ const Intro = () => {
                 </h1>
             </div>
 
-            <p className="intro-note text-base md:text-lg text-deep-maroon/60 italic mt-8 animate-pulse">
+            <p className="intro-note text-base md:text-lg text-deep-maroon font-medium italic mt-8">
                 {content.note}
             </p>
         </div>

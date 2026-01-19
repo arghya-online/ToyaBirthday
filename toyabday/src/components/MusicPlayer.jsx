@@ -12,23 +12,34 @@ const MusicPlayer = () => {
         audioRef.current.volume = 0.4;
 
         // Suggest interaction for autoplay policies
-        const handleFirstClick = () => {
-            if (!isPlaying) {
+        const handleInteraction = () => {
+            if (audioRef.current && audioRef.current.paused) {
                 audioRef.current.play().then(() => {
                     setIsPlaying(true);
                 }).catch(e => console.log("Audio play failed:", e));
             }
-            window.removeEventListener('click', handleFirstClick);
+            // Remove listeners once we've tried to play
+            ['click', 'touchstart', 'keydown'].forEach(event =>
+                window.removeEventListener(event, handleInteraction)
+            );
         };
 
-        window.addEventListener('click', handleFirstClick);
+        // Try to play immediately (might work if user already interacted with domain)
+        audioRef.current.play().then(() => setIsPlaying(true)).catch(() => {
+            // If failed, wait for interaction
+            ['click', 'touchstart', 'keydown'].forEach(event =>
+                window.addEventListener(event, handleInteraction)
+            );
+        });
 
         return () => {
             if (audioRef.current) {
                 audioRef.current.pause();
                 audioRef.current = null;
             }
-            window.removeEventListener('click', handleFirstClick);
+            ['click', 'touchstart', 'keydown'].forEach(event =>
+                window.removeEventListener(event, handleInteraction)
+            );
         };
     }, []);
 
@@ -48,7 +59,7 @@ const MusicPlayer = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={togglePlay}
-            className="fixed bottom-6 left-6 z-50 p-3 bg-white/80 backdrop-blur-md rounded-full text-rose-accent shadow-lg border border-rose-accent/20"
+            className="hidden fixed bottom-6 left-6 z-50 p-3 bg-white/80 backdrop-blur-md rounded-full text-rose-accent shadow-lg border border-rose-accent/20"
             style={{ boxShadow: isPlaying ? "0 0 15px rgba(210, 92, 101, 0.4)" : "none" }}
         >
             {isPlaying ? <Music size={24} className="animate-pulse" /> : <VolumeX size={24} />}

@@ -72,7 +72,7 @@ export const siteContent = {
                     "May you always be surrounded by people who choose you.",
                     "And even on your worst days... may you still feel loved."
                 ],
-                signature: "From someone who genuinely smiles a little more...",
+                signature: "",
                 footer: "Made with care"
             },
             buttons: {
